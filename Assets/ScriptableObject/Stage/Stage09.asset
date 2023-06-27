@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e853bf433c866e468a0ab747c154bf3, type: 3}
+  m_Name: Stage09
+  m_EditorClassIdentifier: 
+  stageNumber: 9
+  stageName: 5x5
+  shape: {fileID: 11400000, guid: 3f3800be2f062784e9723d70fb4afed3, type: 2}
+  stageImage: {fileID: 21300000, guid: 80d26b8037e1d1b4183f00255fe1917b, type: 3}
+  brickItems:
+  - prefab: {fileID: 7721854284121162187, guid: eae187ea539f863448d8dd5ec2044473, type: 3}
+    count: 2
+    slot: {fileID: 0}
+  - prefab: {fileID: 5993185946809733446, guid: fd1e1e4706de78641a8f292b81e298a3, type: 3}
+    count: 1
+    slot: {fileID: 0}
+  - prefab: {fileID: 2163957575217206426, guid: 6a1744707242b604d8591abfbc027b6f, type: 3}
+    count: 1
+    slot: {fileID: 0}
+  - prefab: {fileID: 4952580044390206192, guid: 4397b61104ef9d64b9ee3e73978ba375, type: 3}
+    count: 1
+    slot: {fileID: 0}
+  - prefab: {fileID: 7826737961018998249, guid: 52226649f70543e4a9a8ed3b6f8e3ba9, type: 3}
+    count: 1
+    slot: {fileID: 0}
+  - prefab: {fileID: 3202082053028273546, guid: e26da6b8893c38a4fad27f8bd0df1150, type: 3}
+    count: 1
+    slot: {fileID: 0}
+  - prefab: {fileID: 3633361382077678245, guid: 9d4a75a6489ba0543a08836b682ee7e3, type: 3}
+    count: 1
+    slot: {fileID: 0}

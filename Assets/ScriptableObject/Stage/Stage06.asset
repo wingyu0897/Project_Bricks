@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e853bf433c866e468a0ab747c154bf3, type: 3}
+  m_Name: Stage06
+  m_EditorClassIdentifier: 
+  stageNumber: 6
+  stageName: Frog
+  shape: {fileID: 11400000, guid: 8a75e3c4dcd315f4cabb6185589d26c2, type: 2}
+  stageImage: {fileID: 21300000, guid: cb77eb4702409714abb4cc2a6aa231bc, type: 3}
+  brickItems:
+  - prefab: {fileID: 5510105784258332113, guid: 3805579702d56fb4c96fab6b931b51b6, type: 3}
+    count: 1
+    slot: {fileID: 0}
+  - prefab: {fileID: 5993185946809733446, guid: fd1e1e4706de78641a8f292b81e298a3, type: 3}
+    count: 1
+    slot: {fileID: 0}
+  - prefab: {fileID: 6682850432179842171, guid: a7e600efce26f3b4e89cf2ca43427da2, type: 3}
+    count: 1
+    slot: {fileID: 0}
+  - prefab: {fileID: 653929758540962540, guid: 5fd2dbf7cf6e86544a6f1d726c9041d9, type: 3}
+    count: 1
+    slot: {fileID: 0}
