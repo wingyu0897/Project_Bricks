@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
 		if (stages.stages.Count < i + 1)
 			return;
 		stageIndex = i;
-		menustage.SetDate(stages.stages[stageIndex].stageImage, stages.stages[stageIndex].stageName);
+		menustage?.SetDate(stages.stages[stageIndex].stageImage, stages.stages[stageIndex].stageName);
 	}
 
 	public void StartGame()

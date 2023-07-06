@@ -10,7 +10,7 @@ public class BlockInventoryUI : MonoBehaviour
     public void MakeUI(BrickItem item)
 	{
         BlockSlot bs = Instantiate(slotPrefab, parent);
-        bs.SetDate(item.prefab.data.image, item.count);
+        bs.SetDate(item.prefab.image, item.count);
         item.slot = bs;
 	}
 }

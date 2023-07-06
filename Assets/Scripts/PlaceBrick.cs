@@ -1,8 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+
+public enum BRICK_ROTATION
+{
+	TURN0,
+	TURN90,
+	TURN180,
+	TURN270,
+}
 
 public class PlaceBrick : MonoBehaviour
 {
@@ -14,6 +21,8 @@ public class PlaceBrick : MonoBehaviour
     private Vector3Int placePosition;
 	private AudioSource audioSource;
 
+	public BRICK_ROTATION turn;
+
 	public List<Vector3Int> placed;
 
 	public UnityEvent OnClear = null;
@@ -24,6 +33,8 @@ public class PlaceBrick : MonoBehaviour
 		inven = GetComponent<BrickInventory>();
 		target = GetComponent<Shape>();
 		audioSource = GetComponent<AudioSource>();
+
+		turn = 0;
 	}
 
 	private void Update()
@@ -41,7 +52,19 @@ public class PlaceBrick : MonoBehaviour
 				placePosition = new Vector3Int(Mathf.RoundToInt(hit.point.x), Mathf.RoundToInt(hit.point.y), Mathf.RoundToInt(hit.point.z));
 			}
 			if (inven.currentBrick?.transMode != null)
-				inven?.currentBrick?.transMode?.transform.SetPositionAndRotation(placePosition, Quaternion.identity);
+			{
+				inven.currentBrick.transMode.transform.position = placePosition;
+			}
+			if (inven.currentBrick != null)
+			{
+				inven.currentBrick.transform.position = placePosition;
+				while (!CanBuild())
+				{
+					placePosition += new Vector3Int(0, 1, 0);
+					inven.currentBrick.transMode.transform.position = placePosition;
+					inven.currentBrick.transform.position = placePosition;
+				}
+			}
 		}
 
 		if (Input.GetKeyDown(KeyCode.C))
@@ -52,7 +75,7 @@ public class PlaceBrick : MonoBehaviour
 		if (EventSystem.current.IsPointerOverGameObject())
 			return;
 
-		if (Input.GetMouseButtonDown(0) && inven.selectedBrick?.count > 0 && CanBuild(placePosition))
+		if (Input.GetMouseButtonDown(0) && inven.selectedBrick?.count > 0 && CanBuild())
 		{
 			BuildBlock();
 		}
@@ -66,13 +89,24 @@ public class PlaceBrick : MonoBehaviour
 				}
 			}
 		}
+
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			inven.currentBrick?.transMode?.transform.Rotate(new Vector3(0, -90, 0), Space.World);
+			inven.currentBrick?.transform.Rotate(new Vector3(0, -90, 0), Space.World);
+		}
+		if (Input.GetKeyDown(KeyCode.T))
+		{
+			inven.currentBrick?.transMode?.transform.Rotate(new Vector3(90, 0, 0), Space.World);
+			inven.currentBrick?.transform.Rotate(new Vector3(90, 0, 0), Space.World);
+		}
 	}
 
-	public bool CanBuild(Vector3Int startPos)
+	public bool CanBuild()
 	{
-		foreach (Vector3Int pos in inven.currentBrick?.data.positions)
+		foreach (Vector3Int pos in inven.currentBrick.GetWorldPositions())
 		{
-			if (placed.Contains(startPos + pos))
+			if (placed.Contains(pos) || pos.y < 0)
 			{
 				return false;
 			}
@@ -85,14 +119,16 @@ public class PlaceBrick : MonoBehaviour
 	{
 		audioSource.Play();
 		Brick down = Instantiate(inven.currentBrick, placeParent);
+		down.gameObject.SetActive(true);
 		down.transform.position = placePosition;
 		down.position = placePosition;
 		down.gameObject.name = down.name.Replace("(Clone)", "");
 
-		foreach (Vector3Int pos in inven.currentBrick.data.positions)
+		foreach (Vector3Int pos in down.GetWorldPositions())
 		{
-			placed.Add(placePosition + pos);
+			placed.Add(pos);
 		}
+		//inven.currentBrick.transform.eulerAngles = Vector3.zero;
 		inven.PlaceBrick();
 
 		CheckClear();
@@ -101,9 +137,9 @@ public class PlaceBrick : MonoBehaviour
 	public void RemoveBlock(Brick brick)
 	{
 		Vector3Int position = brick.position;
-		foreach (Vector3Int pos in brick.data.positions)
+		foreach (Vector3Int pos in brick.GetWorldPositions())
 		{
-			placed.Remove(position + pos);
+			placed.Remove(pos);
 		}
 
 		inven.AddBrick(brick);

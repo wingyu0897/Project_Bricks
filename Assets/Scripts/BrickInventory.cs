@@ -45,7 +45,6 @@ public class BrickInventory : MonoBehaviour
     public void AddBrick(Brick brick)
 	{
         BrickItem item = FindBrick(brick);
-        print(item);
         if (item == null) return;
 
         item.count++;
@@ -59,7 +58,11 @@ public class BrickInventory : MonoBehaviour
             AddBrick(brick);
 		}
 
-        BrickItem item = new BrickItem(brick, count);
+        Brick inst = Instantiate(brick);
+        inst.transform.position = Vector3.zero;
+        inst.gameObject.SetActive(false);
+        inst.gameObject.name = inst.name.Replace("(Clone)", "");
+        BrickItem item = new BrickItem(inst, count);
         invUI.MakeUI(item);
         int n = ownBricks.Count;
         item.slot?.OnClick(() => SelectBrick(n));
@@ -88,7 +91,7 @@ public class BrickInventory : MonoBehaviour
 
         selectIndex = index;
         selectedBrick = ownBricks[selectIndex];
-        invUI.currentBlock.sprite = selectedBrick?.prefab.data.image;
+        invUI.currentBlock.sprite = selectedBrick?.prefab.image;
 
         if (selectedBrick.prefab.transMode == null && selectedBrick.prefab.transPrefab != null)
 		{

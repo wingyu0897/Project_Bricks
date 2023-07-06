@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "SO/DATA/Brick")]
 public class BrickSO : ScriptableObject
 {
-    public Sprite image;
-    public List<Vector3Int> positions;
+    //public Sprite image;
+    //public List<Vector3Int> positions;
 }
