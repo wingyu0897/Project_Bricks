@@ -3,14 +3,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public enum BRICK_ROTATION
-{
-	TURN0,
-	TURN90,
-	TURN180,
-	TURN270,
-}
-
 public class PlaceBrick : MonoBehaviour
 {
 	public Transform placeParent;
@@ -20,8 +12,6 @@ public class PlaceBrick : MonoBehaviour
 	private Camera mainCamera;
     private Vector3Int placePosition;
 	private AudioSource audioSource;
-
-	public BRICK_ROTATION turn;
 
 	public List<Vector3Int> placed;
 
@@ -33,8 +23,6 @@ public class PlaceBrick : MonoBehaviour
 		inven = GetComponent<BrickInventory>();
 		target = GetComponent<Shape>();
 		audioSource = GetComponent<AudioSource>();
-
-		turn = 0;
 	}
 
 	private void Update()
@@ -155,7 +143,7 @@ public class PlaceBrick : MonoBehaviour
 			if (inven.currentBrick?.transMode != null)
 				inven.currentBrick.transMode.SetActive(false);
 			OnClear?.Invoke();
-			GameManager.Instance.ClearGame();
+			FindObjectOfType<ClearAction>().OnClear();
 			this.enabled = false;
 		}
 	}

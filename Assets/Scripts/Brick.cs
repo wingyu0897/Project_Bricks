@@ -29,7 +29,6 @@ public class Brick : MonoBehaviour
 		foreach (Transform trm in transform)
 		{
 			cubes.Add(Vector3Int.RoundToInt(trm.position));
-			print(Vector3Int.RoundToInt(trm.position));
 		}
 
 		return cubes;

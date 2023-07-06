@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ClearPanel : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class ClearPanel : MonoBehaviour
 
 	public void ActivePanel(Sprite image, string stageName)
 	{
-		panel.SetActive(true);
+		//panel.SetActive(true);
+		panel.transform.DOMoveY(Camera.main.pixelHeight * 0.5f, 3f).SetEase(Ease.OutExpo);
 		stageImage.sprite = image;
 		nameText.text = $"{stageName} Clear!";
 	}

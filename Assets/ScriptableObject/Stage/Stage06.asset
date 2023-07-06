@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNumber: 6
   stageName: Frog
+  difficult: 1
   shape: {fileID: 11400000, guid: 8a75e3c4dcd315f4cabb6185589d26c2, type: 2}
   stageImage: {fileID: 21300000, guid: cb77eb4702409714abb4cc2a6aa231bc, type: 3}
   brickItems:

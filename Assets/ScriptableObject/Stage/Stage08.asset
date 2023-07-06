@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNumber: 8
   stageName: Piramid
+  difficult: 2
   shape: {fileID: 11400000, guid: 8ba3936d16bb161498b17e00ffb1c15f, type: 2}
   stageImage: {fileID: 21300000, guid: dcf4e4aa56813604bbc3d31d9847d790, type: 3}
   brickItems:

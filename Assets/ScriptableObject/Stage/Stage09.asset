@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNumber: 9
   stageName: 5x5
+  difficult: 0
   shape: {fileID: 11400000, guid: 3f3800be2f062784e9723d70fb4afed3, type: 2}
   stageImage: {fileID: 21300000, guid: 80d26b8037e1d1b4183f00255fe1917b, type: 3}
   brickItems:

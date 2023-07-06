@@ -77,6 +77,10 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator LoadSceneAsync(int n, Action callBack)
 	{
+		SceneManager.LoadScene(2);
+
+		yield return new WaitForSeconds(3f);
+
 		AsyncOperation ao = SceneManager.LoadSceneAsync(n);
 
 		while (!ao.isDone)
@@ -97,6 +101,8 @@ public class GameManager : MonoBehaviour
 
 		CameraMovement camMove = FindObjectOfType<CameraMovement>();
 		camMove.Init();
+
+		camMove.cam.backgroundColor = (currentStage.difficult == 0) ? Color.green : (currentStage.difficult == 1) ? new Color(255, 187, 0, 0) : Color.red;
 
 		BrickInventory inv = FindObjectOfType<BrickInventory>();
 		inv.Init();
