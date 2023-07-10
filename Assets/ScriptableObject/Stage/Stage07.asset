@@ -19,10 +19,7 @@ MonoBehaviour:
   stageImage: {fileID: 21300000, guid: 8f3d46914c81414408ee8a76b69155a6, type: 3}
   brickItems:
   - prefab: {fileID: 7632593660598118764, guid: 7f319d12a1ad5864bba2799e91594be3, type: 3}
-    count: 2
-    slot: {fileID: 0}
-  - prefab: {fileID: 5993185946809733446, guid: fd1e1e4706de78641a8f292b81e298a3, type: 3}
-    count: 1
+    count: 3
     slot: {fileID: 0}
   - prefab: {fileID: 1800048473299645387, guid: 858c3f2830c4bf04c88b6111887d556a, type: 3}
     count: 1

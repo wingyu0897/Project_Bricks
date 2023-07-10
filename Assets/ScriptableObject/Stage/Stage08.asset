@@ -28,10 +28,7 @@ MonoBehaviour:
     count: 1
     slot: {fileID: 0}
   - prefab: {fileID: 3202082053028273546, guid: e26da6b8893c38a4fad27f8bd0df1150, type: 3}
-    count: 2
-    slot: {fileID: 0}
-  - prefab: {fileID: 6886509692624633279, guid: eeaf446ee15b72b4cbc8dd8fe0e4e455, type: 3}
-    count: 1
+    count: 3
     slot: {fileID: 0}
   - prefab: {fileID: 1536433381997392665, guid: a6dc89911e82bf74db99821620d3dc4f, type: 3}
     count: 1

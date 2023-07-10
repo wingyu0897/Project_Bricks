@@ -15,6 +15,8 @@ public class PlaceBrick : MonoBehaviour
 
 	public List<Vector3Int> placed;
 
+	public UnityEvent OnPlaceBrick = null;
+	public UnityEvent OnRemoveBrick = null;
 	public UnityEvent OnClear = null;
 
 	private void Awake()
@@ -119,6 +121,7 @@ public class PlaceBrick : MonoBehaviour
 		//inven.currentBrick.transform.eulerAngles = Vector3.zero;
 		inven.PlaceBrick();
 
+		OnPlaceBrick?.Invoke();
 		CheckClear();
 	}
 
@@ -133,6 +136,7 @@ public class PlaceBrick : MonoBehaviour
 		inven.AddBrick(brick);
 		Destroy(brick.gameObject);
 
+		OnRemoveBrick?.Invoke();
 		CheckClear();
 	}
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stage04
   m_EditorClassIdentifier: 
   stageNumber: 4
-  stageName: Cube
+  stageName: 3x3x3
   difficult: 2
   shape: {fileID: 11400000, guid: 13d74da04a17eab40b71e915a68cb2be, type: 2}
   stageImage: {fileID: 21300000, guid: 1d508cbe4954de147800aa924eda3397, type: 3}

@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +15,8 @@ public class GameManager : MonoBehaviour
 
 	private StageUI menustage;
 	private StageSO currentStage;
+
+	private float start;
 
 	private void Awake()
 	{
@@ -79,7 +78,9 @@ public class GameManager : MonoBehaviour
 	{
 		SceneManager.LoadScene(2);
 
-		yield return new WaitForSeconds(3f);
+		float delay = UnityEngine.Random.Range(1.0f, 4.0f);
+
+		yield return new WaitForSeconds(delay);
 
 		AsyncOperation ao = SceneManager.LoadSceneAsync(n);
 
@@ -97,6 +98,7 @@ public class GameManager : MonoBehaviour
 		if (stage == null)
 			stage = stages.stages[stageIndex];
 
+		start = Time.time;
 		currentStage = stage;
 
 		CameraMovement camMove = FindObjectOfType<CameraMovement>();
@@ -118,8 +120,9 @@ public class GameManager : MonoBehaviour
 
 	public void ClearGame()
 	{
+		int clearTime = (int)(Time.time - start);
 		ClearPanel cp = FindObjectOfType<ClearPanel>();
-		cp.ActivePanel(currentStage.stageImage, currentStage.stageName);
+		cp.ActivePanel(currentStage.stageImage, currentStage.stageName, clearTime);
 	}
 
 	public void ReturnMenu()
